@@ -8,10 +8,12 @@ if (!API_KEY) {
 
 const ai = new GoogleGenAI({ apiKey: API_KEY });
 
+const MODEL_NAME = 'gemini-2.5-flash';
+
 export const generateSummary = async (text: string): Promise<string> => {
   try {
     const response = await ai.models.generateContent({
-      model: 'gemini-2.5-flash',
+      model: MODEL_NAME,
       contents: `다음 텍스트를 간결하고 이해하기 쉽게 요약해주세요:\n\n---\n${text}\n---`,
     });
     return response.text;
@@ -24,7 +26,7 @@ export const generateSummary = async (text: string): Promise<string> => {
 export const generateQuiz = async (text: string): Promise<QuizQuestion[]> => {
   try {
     const response = await ai.models.generateContent({
-      model: "gemini-2.5-flash",
+      model: MODEL_NAME,
       contents: `다음 텍스트를 기반으로 5개의 객관식 퀴즈를 만들어주세요. 각 질문에는 4개의 선택지를 제공하고, 정답의 인덱스(0-3)를 명확하게 표시해주세요.\n\n---\n${text}\n---`,
       config: {
         responseMimeType: "application/json",
@@ -65,7 +67,7 @@ export const generateQuiz = async (text: string): Promise<QuizQuestion[]> => {
 export const generateFlashcards = async (text: string): Promise<Flashcard[]> => {
   try {
     const response = await ai.models.generateContent({
-      model: "gemini-2.5-flash",
+      model: MODEL_NAME,
       contents: `다음 텍스트에서 최소 5개의 핵심 용어와 그 정의를 추출하여 플래시카드를 만들어주세요.\n\n---\n${text}\n---`,
       config: {
         responseMimeType: "application/json",

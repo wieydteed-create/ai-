@@ -83,13 +83,15 @@ const App: React.FC = () => {
         <Header />
         <main className="mt-8">
           <div className="bg-gray-800 rounded-lg shadow-2xl p-6">
-            <h2 className="text-xl font-bold text-blue-400 mb-4">텍스트 입력</h2>
-            <textarea
-              value={inputText}
-              onChange={(e) => setInputText(e.target.value)}
-              placeholder="요약, 퀴즈 생성, 또는 플래시카드 제작을 위해 텍스트를 여기에 붙여넣으세요..."
-              className="w-full h-48 p-4 bg-gray-900 border-2 border-gray-700 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors duration-300 resize-y"
-            />
+            <div className="mb-4">
+               <h2 className="text-xl font-bold text-blue-400 mb-2">텍스트 입력</h2>
+              <textarea
+                value={inputText}
+                onChange={(e) => setInputText(e.target.value)}
+                placeholder="요약, 퀴즈 생성, 또는 플래시카드 제작을 위해 텍스트를 여기에 붙여넣으세요..."
+                className="w-full h-48 p-4 bg-gray-900 border-2 border-gray-700 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors duration-300 resize-y"
+              />
+            </div>
              <div className="mt-4 flex flex-col sm:flex-row justify-center gap-3">
                {generationButtons.map(({ type, label }) => (
                  <button
